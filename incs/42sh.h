@@ -36,6 +36,8 @@ void			free_env(t_list *lst);
 struct termios	*init_term(t_42sh *shell);
 struct termios	*init_termios(struct termios *term, int i);
 
+void			loop(t_42sh *shell);
+
 
 
 #endif

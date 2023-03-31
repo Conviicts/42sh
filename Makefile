@@ -24,7 +24,8 @@ INCLUDES	= -I $(INCS) -I $(LIBFT_INC)
 SRC			=	main.c						\
 				env/env.c					\
 				env/utils.c					\
-				term.c
+				term.c						\
+				run.c
 
 OBJS		= $(addprefix $(SRCS), $(SRC:.c=.o))
 

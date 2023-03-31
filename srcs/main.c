@@ -15,7 +15,7 @@ int main(int ac, char **av, char **env) {
 		free(term);
 		return (0);
 	}
-
+	loop(&shell);
 	free_env(shell.env);
 	free(term);
 	system("leaks 42sh");
