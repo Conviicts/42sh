@@ -24,6 +24,8 @@ INCLUDES	= -I $(INCS) -I $(LIBFT_INC)
 SRC			=	main.c						\
 				env/env.c					\
 				env/utils.c					\
+				term/char.c					\
+				term/arrow.c				\
 				term.c						\
 				run.c
 
@@ -36,12 +38,12 @@ $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) $(LIBS)
 
 clean:
-	# make -C ./libft clean
+	make -C ./libft clean
 	rm -f $(OBJS)
 .PHONY: clean
 
 fclean: clean
-	# make -C ./libft fclean
+	make -C ./libft fclean
 	rm -f $(NAME)
 .PHONY: fclean
 
