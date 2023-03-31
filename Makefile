@@ -17,12 +17,14 @@ LIBFT_INC	= ./libft/
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror $(INCLUDES) -g
-LIBS		= -L ./libft/ -lft
+LIBS		= -L ./libft/ -lft -ltermcap
 
 INCLUDES	= -I $(INCS) -I $(LIBFT_INC)
 
 SRC			=	main.c						\
-				env.c
+				env/env.c					\
+				env/utils.c					\
+				term.c
 
 OBJS		= $(addprefix $(SRCS), $(SRC:.c=.o))
 

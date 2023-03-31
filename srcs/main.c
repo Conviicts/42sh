@@ -3,19 +3,21 @@
 int main(int ac, char **av, char **env) {
 	(void)ac;
 	(void)av;
-	(void)env;
-	
-	t_42sh	shell;
+	t_42sh			shell;
+	struct termios	*term;
 	
 	ft_memset(&shell, 0, sizeof(shell));
+	shell.env = parse_env(env);
 
-	shell.env = init_env(env);
+	if ((term = init_term(&shell)) == NULL) {
+		ft_putstr_fd("42sh: Can't find terminal definition. Exiting now.\n", 2);
+		free_env(shell.env);
+		free(term);
+		return (0);
+	}
 
-	// printf("%s\n", ((t_env*)shell.env->content)->value);
-	// printf("%s\n", ((t_env*)shell.env->next->content)->value);
-	// printf("%s\n", ((t_env*)shell.env->next->next->content)->value);
-	// printf("%s\n", ((t_env*)shell.env->next->next->next->content)->value);
-
-	// system("leaks 42sh");
+	free_env(shell.env);
+	free(term);
+	system("leaks 42sh");
 	return (0);
 }
