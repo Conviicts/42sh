@@ -14,16 +14,19 @@
 
 #include "libft.h"
 
-typedef struct			s_env {
-	char				*key;
-	char				*value;
-}						t_env;
+#define t_termios struct termios
+
+typedef struct	s_env {
+	char		*key;
+	char		*value;
+}				t_env;
 
 
-typedef struct			s_42sh {
-	t_list				*env;
-	char				*command;
-}						t_42sh;
+typedef struct	s_42sh {
+	t_list		*env;
+	char		*command;
+	char		*prompt;
+}				t_42sh;
 
 t_list			*parse_env(char **env);
 char			*get_env_var(t_list *env, char *key);
@@ -34,11 +37,13 @@ void			env_add_back(t_list **lst, char *key, char *value);
 void			free_env(t_list *lst);
 
 
-struct termios	*init_term(t_42sh *shell);
-struct termios	*init_termios(struct termios *term, int i);
+t_termios		*init_term(t_42sh *shell);
+t_termios		*init_termios(t_termios *term, int i);
 
 int				is_print_del_char(t_42sh *shell, char *buffer);
 int				is_arrow_key(char *buffer);
+
+char			*get_prompt(t_42sh *shell);
 
 void			loop(t_42sh *shell);
 

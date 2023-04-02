@@ -26,7 +26,7 @@ SRC			=	main.c						\
 				env/utils.c					\
 				term/char.c					\
 				term/arrow.c				\
-				term.c						\
+				term/term.c					\
 				run.c
 
 OBJS		= $(addprefix $(SRCS), $(SRC:.c=.o))
@@ -38,12 +38,12 @@ $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) $(LIBS)
 
 clean:
-	make -C ./libft clean
+	# make -C ./libft clean
 	rm -f $(OBJS)
 .PHONY: clean
 
 fclean: clean
-	make -C ./libft fclean
+	# make -C ./libft fclean
 	rm -f $(NAME)
 .PHONY: fclean
 
